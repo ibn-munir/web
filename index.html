@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakibul Haque Bhuiyan — Developer</title>
+<link rel="icon" type="image/jpeg" href="rakibul-haque-bhuiyan.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111;--surface2:#1a1a1a;--border:#222;
+  --accent:#00e5a0;--text:#f0f0f0;--muted:#888;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 2rem;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:rgba(10,10,10,.92);
+  backdrop-filter:blur(10px);z-index:100;
+}
+.logo{font-size:15px;font-weight:800;letter-spacing:-.5px;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+
+/* COVER / HERO */
+.hero{
+  position:relative;min-height:90vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  border-bottom:1px solid var(--border);overflow:hidden;
+}
+.cover-bg{
+  position:absolute;inset:0;
+  overflow:hidden;
+}
+.cover-bg img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  filter:brightness(.35) saturate(.7);
+  transition:.3s;display:block;
+}
+.hero:hover .cover-bg img{filter:brightness(.4) saturate(.8)}
+.cover-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, #0a0a0a 30%, transparent 70%);
+}
+.hero-content{position:relative;z-index:2;padding:3rem 2rem}
+.hero-tag{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--accent);letter-spacing:2px;margin-bottom:1.2rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+.hero-name{
+  font-size:clamp(2.8rem,9vw,5.5rem);
+  font-weight:800;line-height:.92;letter-spacing:-3px;
+  margin-bottom:1.5rem;
+}
+.hero-name .accent{color:var(--accent)}
+.hero-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.avatar{
+  width:64px;height:64px;border-radius:50%;
+  border:2px solid var(--accent);
+  object-fit:cover;flex-shrink:0;
+}
+.hero-bio{font-size:14px;color:var(--muted);line-height:1.7;max-width:520px}
+.hero-bio strong{color:#ddd}
+.hero-cta{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{
+  padding:.65rem 1.4rem;font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;border:1px solid;
+  border-radius:2px;cursor:pointer;text-decoration:none;
+  transition:.2s;font-family:'Syne',sans-serif;display:inline-block;
+}
+.btn-primary{background:var(--accent);color:#000;border-color:var(--accent)}
+.btn-primary:hover{background:transparent;color:var(--accent)}
+.btn-ghost{background:transparent;color:var(--muted);border-color:var(--border)}
+.btn-ghost:hover{color:var(--text);border-color:#555}
+
+/* STACK */
+.stack-row{
+  display:flex;gap:.5rem;flex-wrap:wrap;
+  padding:1.2rem 2rem;border-bottom:1px solid var(--border);
+  background:var(--surface);
+}
+.tag{
+  font-family:'DM Mono',monospace;font-size:10px;
+  padding:.3rem .7rem;border:1px solid var(--border);
+  border-radius:2px;color:var(--muted);transition:.2s;cursor:default;
+}
+.tag:hover{border-color:var(--accent);color:var(--accent)}
+.tag.label{color:#444;border-color:#1a1a1a;cursor:default}
+
+/* SECTIONS */
+.section{padding:3rem 2rem;border-bottom:1px solid var(--border)}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  color:var(--accent);letter-spacing:2px;
+  margin-bottom:2rem;display:flex;align-items:center;gap:1rem;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.project-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;padding:1.5rem;transition:.25s;
+  display:flex;flex-direction:column;gap:.75rem;
+}
+.project-card:hover{border-color:#333;background:var(--surface2);transform:translateY(-2px)}
+.proj-head{display:flex;justify-content:space-between;align-items:start}
+.proj-name{font-size:16px;font-weight:700}
+.proj-yr{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1}
+.proj-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:auto}
+.proj-tag{
+  font-family:'DM Mono',monospace;font-size:9px;
+  padding:.25rem .55rem;background:#ffffff07;
+  border-radius:2px;color:#666;
+}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:600px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;padding:1.2rem;text-align:center;
+}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent);line-height:1}
+.stat-lbl{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:.4rem}
+
+/* INTERESTS */
+.interest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:2rem}
+@media(max-width:500px){.interest-grid{grid-template-columns:repeat(2,1fr)}}
+.interest-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;padding:.8rem 1rem;
+  display:flex;align-items:center;gap:.6rem;
+  font-size:12px;color:var(--muted);transition:.2s;
+}
+.interest-item:hover{color:var(--text);border-color:#333}
+.int-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:1.5rem;border-left:1px solid var(--border)}
+.tl-item{margin-bottom:2rem;position:relative}
+.tl-item::before{
+  content:'';position:absolute;left:-1.65rem;top:.35rem;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1.5px solid var(--accent);
+}
+.tl-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);margin-bottom:.3rem}
+.tl-title{font-size:15px;font-weight:700;margin-bottom:.3rem}
+.tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* CONTACT */
+.contact-list{display:flex;flex-direction:column;gap:.6rem;max-width:560px}
+.contact-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.2rem;background:var(--surface);
+  border:1px solid var(--border);border-radius:4px;
+  text-decoration:none;transition:.2s;
+}
+.contact-item:hover{border-color:#333;background:var(--surface2)}
+.ci-left{display:flex;align-items:center;gap:1rem}
+.ci-icon{
+  width:32px;height:32px;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;font-family:'DM Mono',monospace;
+}
+.ci-label{font-size:13px;color:var(--text)}
+.ci-val{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:1px}
+.ci-arrow{color:var(--muted);font-size:14px}
+
+/* FOOTER */
+footer{
+  padding:2rem;text-align:center;
+  font-family:'DM Mono',monospace;font-size:11px;color:#444;
+  border-top:1px solid var(--border);
+}
+footer span{color:var(--accent)}
+
+/* CURSOR BLINK */
+.blink{
+  display:inline-block;width:3px;height:.85em;
+  background:var(--accent);vertical-align:-.05em;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:.6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">RHB_</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="cover-bg"><img src="rakibul-haque-bhuiyan-cover.jpg" alt=""></div>
+  <div class="cover-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for projects</div>
+    <h1 class="hero-name">
+      Rakibul<br><span class="accent">Haque</span><br>Bhuiyan<span class="blink"></span>
+    </h1>
+    <div class="hero-row">
+      <img class="avatar" src="rakibul-haque-bhuiyan.jpg" alt="Rakibul Haque Bhuiyan">
+      <p class="hero-bio">
+        Self-taught developer from Bangladesh. Building the web one Firebase call at a time —
+        client projects, marketplaces, institutional platforms.
+        Founder of <strong>Codemyst</strong>.
+      </p>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#work">View Projects</a>
+      <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<div class="stack-row">
+  <span class="tag label">Stack //</span>
+  <span class="tag">React</span>
+  <span class="tag">Firebase</span>
+  <span class="tag">HTML / CSS / JS</span>
+  <span class="tag">Python</span>
+  <span class="tag">TypeScript</span>
+  <span class="tag">Tailwind</span>
+  <span class="tag">Cloudinary</span>
+  <span class="tag">Firestore</span>
+  <span class="tag">Vite</span>
+  <span class="tag">Flask</span>
+  <span class="tag">ML</span>
+</div>
+
+<!-- PROJECTS -->
+<section class="section reveal" id="work">
+  <div class="sec-label">Featured Projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="proj-head">
+        <span class="proj-name">Codemyst Templates</span>
+        <span class="proj-yr">2024–25</span>
+      </div>
+      <p class="proj-desc">AI-powered template marketplace with Groq LLM (llama-3.3-70b) integration for real-time customization. Full Firebase stack with Auth, Firestore & Storage.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">React</span><span class="proj-tag">Firebase</span>
+        <span class="proj-tag">Groq API</span><span class="proj-tag">AI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-head">
+        <span class="proj-name">Al-Baraka Laser Art</span>
+        <span class="proj-yr">2024–25</span>
+      </div>
+      <p class="proj-desc">E-commerce platform with React, TypeScript & Vite. Firebase Auth + Cloudinary media management. Full product catalogue with admin panel.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">React</span><span class="proj-tag">TypeScript</span>
+        <span class="proj-tag">Vite</span><span class="proj-tag">Cloudinary</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-head">
+        <span class="proj-name">আল ইনতিবাহ — Madrasa</span>
+        <span class="proj-yr">2025</span>
+      </div>
+      <p class="proj-desc">Full institution website with Bengali admin panel. Teachers, notices, gallery & statistics management via Firestore + Cloudinary.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Firebase</span><span class="proj-tag">Bengali UI</span>
+        <span class="proj-tag">Firestore</span><span class="proj-tag">Admin Panel</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-head">
+        <span class="proj-name">WiFi Remote Control</span>
+        <span class="proj-yr">2025</span>
+      </div>
+      <p class="proj-desc">Phone-to-PC remote control over WiFi using Flask + SocketIO with a Fluent Design HTML frontend. Open-source & YouTube content project.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span><span class="proj-tag">Flask</span>
+        <span class="proj-tag">SocketIO</span><span class="proj-tag">Open Source</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-head">
+        <span class="proj-name">Jobayer Mart</span>
+        <span class="proj-yr">2024–25</span>
+      </div>
+      <p class="proj-desc">Natural products e-commerce on GitHub Pages. Firebase-powered admin panel with WhatsApp-based checkout flow.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Firebase</span><span class="proj-tag">GitHub Pages</span>
+        <span class="proj-tag">WhatsApp API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-head">
+        <span class="proj-name">৭ দিনের রূপান্তর</span>
+        <span class="proj-yr">2024</span>
+      </div>
+      <p class="proj-desc">Bengali gamified self-improvement app with Firebase Auth, Firestore, GPT-3.5-turbo motivation messages and Islamic mode.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Firebase</span><span class="proj-tag">OpenAI</span>
+        <span class="proj-tag">Bengali</span><span class="proj-tag">Gamification</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section reveal" id="about">
+  <div class="sec-label">About</div>
+
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-num">10+</div><div class="stat-lbl">projects shipped</div></div>
+    <div class="stat-box"><div class="stat-num">2024</div><div class="stat-lbl">started coding</div></div>
+    <div class="stat-box"><div class="stat-num">BD</div><div class="stat-lbl">Bangladesh</div></div>
+    <div class="stat-box"><div class="stat-num">∞</div><div class="stat-lbl">things to build</div></div>
+  </div>
+
+  <p style="font-size:14px;color:var(--muted);line-height:1.8;max-width:640px;margin-bottom:2rem">
+    Started coding in April 2024 — entirely self-taught through hands-on projects. Not courses.
+    Not tutorials. Just building things until they worked. Now running
+    <strong style="color:#ccc">Codemyst</strong>, handling client work across e-commerce,
+    institutional, and SaaS platforms. Long-term goal: educational tools combining technology
+    with meaningful learning, with ML engineering as the direction.
+  </p>
+
+  <div class="sec-label">Interests</div>
+  <div class="interest-grid">
+    <div class="interest-item"><div class="int-dot"></div>Machine Learning</div>
+    <div class="interest-item"><div class="int-dot"></div>Competitive Programming</div>
+    <div class="interest-item"><div class="int-dot"></div>Robotics</div>
+    <div class="interest-item"><div class="int-dot"></div>Content Creation</div>
+    <div class="interest-item"><div class="int-dot"></div>Open Source</div>
+    <div class="interest-item"><div class="int-dot"></div>EdTech</div>
+  </div>
+
+  <div class="sec-label" style="margin-top:2.5rem">Journey</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Apr 2024</div>
+      <div class="tl-title">First line of code</div>
+      <div class="tl-desc">Started with HTML/CSS/JS fundamentals and Python basics entirely on mobile.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mid 2024</div>
+      <div class="tl-title">First real client projects</div>
+      <div class="tl-desc">Built live websites — e-commerce, institutional platforms, Bengali admin panels with Firebase.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Late 2024</div>
+      <div class="tl-title">Founded Codemyst</div>
+      <div class="tl-desc">Launched personal tech organization. Template marketplace, SaaS tools, full client pipeline.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2025</div>
+      <div class="tl-title">AI integration & growth</div>
+      <div class="tl-desc">Groq LLM, Claude MCP, YouTube channel — building in public with long-term vision.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section reveal" id="contact">
+  <div class="sec-label">Contact</div>
+  <div class="contact-list">
+    <a class="contact-item" href="https://www.linkedin.com/in/rakibul-haque-bhuiyan/" target="_blank">
+      <div class="ci-left">
+        <div class="ci-icon" style="background:#0a66c222;color:#0a66c2">in</div>
+        <div>
+          <div class="ci-label">LinkedIn</div>
+          <div class="ci-val">rakibul-haque-bhuiyan</div>
+        </div>
+      </div>
+      <span class="ci-arrow">↗</span>
+    </a>
+    <a class="contact-item" href="https://github.com/ibn-munir" target="_blank">
+      <div class="ci-left">
+        <div class="ci-icon" style="background:#ffffff11;color:#aaa">gh</div>
+        <div>
+          <div class="ci-label">GitHub</div>
+          <div class="ci-val">ibn-munir</div>
+        </div>
+      </div>
+      <span class="ci-arrow">↗</span>
+    </a>
+    <div class="contact-item" style="cursor:default">
+      <div class="ci-left">
+        <div class="ci-icon" style="background:#00e5a011;color:var(--accent)">cm</div>
+        <div>
+          <div class="ci-label">Organization</div>
+          <div class="ci-val">Codemyst — Narsingdi, Bangladesh 🇧🇩</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 <span>Rakibul Haque Bhuiyan</span> · self-taught developer · Bangladesh
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
